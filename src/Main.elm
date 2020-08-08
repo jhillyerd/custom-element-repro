@@ -7,7 +7,8 @@ module Main exposing (..)
 --
 
 import Browser
-import Html exposing (Html, button, div, text)
+import Html exposing (Html, button, div, node, text)
+import Html.Attributes exposing (src)
 import Html.Events exposing (onClick)
 
 
@@ -61,4 +62,5 @@ view model =
         [ button [ onClick Decrement ] [ text "-" ]
         , div [] [ text (String.fromInt model) ]
         , button [ onClick Increment ] [ text "+" ]
+        , node "monitor-messages" [ src "/broken" ] []
         ]
