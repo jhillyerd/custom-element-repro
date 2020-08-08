@@ -7,9 +7,9 @@ module Main exposing (..)
 --
 
 import Browser
-import Html exposing (Html, button, div, node, text)
-import Html.Attributes exposing (src)
-import Html.Events exposing (onClick)
+import Html exposing (Html, div, input, node, span, text)
+import Html.Attributes exposing (src, value)
+import Html.Events exposing (onInput)
 
 
 
@@ -25,12 +25,12 @@ main =
 
 
 type alias Model =
-    Int
+    String
 
 
 init : Model
 init =
-    0
+    "/some/path"
 
 
 
@@ -38,18 +38,14 @@ init =
 
 
 type Msg
-    = Increment
-    | Decrement
+    = ChangeModel String
 
 
 update : Msg -> Model -> Model
 update msg model =
     case msg of
-        Increment ->
-            model + 1
-
-        Decrement ->
-            model - 1
+        ChangeModel str ->
+            str
 
 
 
@@ -59,8 +55,9 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div []
-        [ button [ onClick Decrement ] [ text "-" ]
-        , div [] [ text (String.fromInt model) ]
-        , button [ onClick Increment ] [ text "+" ]
-        , node "monitor-messages" [ src "/broken" ] []
+        [ input [ onInput ChangeModel, value model ] []
+        , span [] [ text (" (model: " ++ model ++ ")") ]
+
+        -- monitor-messages is the custom element that expects a src attribute.
+        , node "monitor-messages" [ src model ] []
         ]
