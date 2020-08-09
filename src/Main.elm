@@ -8,7 +8,7 @@ module Main exposing (..)
 
 import Browser
 import Html exposing (Html, div, input, node, span, text)
-import Html.Attributes exposing (src, value)
+import Html.Attributes exposing (attribute, value)
 import Html.Events exposing (onInput)
 
 
@@ -59,5 +59,5 @@ view model =
         , span [] [ text (" (model: " ++ model ++ ")") ]
 
         -- monitor-messages is the custom element that expects a src attribute.
-        , node "monitor-messages" [ src model ] []
+        , node "monitor-messages" [ attribute "src" model ] []
         ]
