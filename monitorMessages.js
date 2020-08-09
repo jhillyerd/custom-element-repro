@@ -9,6 +9,15 @@ customElements.define(
       super()
     }
 
+    get src() {
+      return this.getAttribute('src')
+    }
+
+    set src(value) {
+      console.info("setting src to:", value)
+      this.setAttribute('src', value)
+    }
+
     connectedCallback() {
       const src = this.getAttribute('src')
       console.info("connected callback, src:", src)
