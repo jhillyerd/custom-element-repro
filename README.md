@@ -1,3 +1,5 @@
+*Note:* See other branches for solutions, turns out not to be an Elm bug.
+
 ## To repro
 
 ```sh
